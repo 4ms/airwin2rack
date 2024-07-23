@@ -8,8 +8,18 @@
  */
 
 #include "AirwinRegistry.h"
-
 #include <cmrc/cmrc.hpp>
+
+#ifndef LONGEST_LABEL
+#define LONGEST_LABEL 0
+#endif
+#ifndef LABEL_BY_PLUG
+#define LABEL_BY_PLUG 0
+#endif
+
+#if LONGEST_LABEL || LABEL_BY_PLUG
+#include <iostream>
+#endif
 
 CMRC_DECLARE(awdoc_resources);
 
@@ -48,9 +58,10 @@ std::string AirwinRegistry::documentationStringFor(int index)
 
 void AirwinRegistry::dumpStatsToStdout()
 {
+
+#if LONGEST_LABEL || LABEL_BY_PLUG
     std::cout << "Airwin Registry Stats\n";
 
-#define LONGEST_LABEL 0
 #if LONGEST_LABEL
     std::set<std::string> params;
     size_t longest{0};
@@ -75,7 +86,6 @@ void AirwinRegistry::dumpStatsToStdout()
     std::cout << "Longest is " << longest << " chars\n";
 #endif
 
-#define LABEL_BY_PLUG 1
 #if LABEL_BY_PLUG
 
     for (const auto &ord : fxAlphaOrdering)
@@ -93,6 +103,7 @@ void AirwinRegistry::dumpStatsToStdout()
 #endif
 
     std::cout << std::endl;
+#endif
 }
 
 #include "ModuleAdd.h"
