@@ -1,15 +1,25 @@
 /*
-* AirwinConsolidated - an adaptation of the airwindows effect suite
-* for various open source clients
-*
-* This source released under the MIT License, found in ~/LICENSE.md.
-*
-* Copyright 2023 by the authors as described in the github transaction log
-*/
+ * AirwinConsolidated - an adaptation of the airwindows effect suite
+ * for various open source clients
+ *
+ * This source released under the MIT License, found in ~/LICENSE.md.
+ *
+ * Copyright 2023 by the authors as described in the github transaction log
+ */
 
 #include "AirwinRegistry.h"
-
 #include <cmrc/cmrc.hpp>
+
+#ifndef LONGEST_LABEL
+#define LONGEST_LABEL 0
+#endif
+#ifndef LABEL_BY_PLUG
+#define LABEL_BY_PLUG 0
+#endif
+
+#if LONGEST_LABEL || LABEL_BY_PLUG
+#include <iostream>
+#endif
 
 CMRC_DECLARE(awdoc_resources);
 
@@ -25,7 +35,7 @@ std::string AirwinRegistry::documentationStringFor(int index)
 {
     auto nm = registry[index].name;
     auto fs = cmrc::awdoc_resources::get_filesystem();
-    auto doc =  std::string("res/awpdoc/") + nm + ".txt";
+    auto doc = std::string("res/awpdoc/") + nm + ".txt";
 
 #ifndef CMRC_NO_EXCEPTIONS
     try
@@ -47,16 +57,17 @@ std::string AirwinRegistry::documentationStringFor(int index)
 
 void AirwinRegistry::dumpStatsToStdout()
 {
+
+#if LONGEST_LABEL || LABEL_BY_PLUG
     std::cout << "Airwin Registry Stats\n";
 
-#define LONGEST_LABEL 0
 #if LONGEST_LABEL
     std::set<std::string> params;
     size_t longest{0};
     for (const auto &r : registry)
     {
         auto fx = r.generator();
-        for (int i=0; i<r.nParams; ++i)
+        for (int i = 0; i < r.nParams; ++i)
         {
             char txt[256];
             fx->getParameterName(i, txt);
@@ -74,7 +85,6 @@ void AirwinRegistry::dumpStatsToStdout()
     std::cout << "Longest is " << longest << " chars\n";
 #endif
 
-#define LABEL_BY_PLUG 1
 #if LABEL_BY_PLUG
 
     for (const auto &ord : fxAlphaOrdering)
@@ -82,7 +92,7 @@ void AirwinRegistry::dumpStatsToStdout()
         const auto &r = registry[ord];
         auto fx = r.generator();
         std::cout << r.name << " (" << r.category << ")\n";
-        for (int i=0; i<r.nParams; ++i)
+        for (int i = 0; i < r.nParams; ++i)
         {
             char txt[256];
             fx->getParameterName(i, txt);
@@ -92,6 +102,7 @@ void AirwinRegistry::dumpStatsToStdout()
 #endif
 
     std::cout << std::endl;
+#endif
 }
 
 #include "ModuleAdd.h"
