@@ -24,29 +24,29 @@ Galactic::Galactic(audioMasterCallback audioMaster) :
 	iirAL = 0.0; iirAR = 0.0;
 	iirBL = 0.0; iirBR = 0.0;
 	
-	for(int count = 0; count < 6479; count++) {aIL[count] = 0.0;aIR[count] = 0.0;}
-	for(int count = 0; count < 3659; count++) {aJL[count] = 0.0;aJR[count] = 0.0;}
-	for(int count = 0; count < 1719; count++) {aKL[count] = 0.0;aKR[count] = 0.0;}
-	for(int count = 0; count < 679; count++) {aLL[count] = 0.0;aLR[count] = 0.0;}
+	for(int count = 0; count <= 6479; count++) {aIL[count] = 0.0;aIR[count] = 0.0;}
+	for(int count = 0; count <= 3659; count++) {aJL[count] = 0.0;aJR[count] = 0.0;}
+	for(int count = 0; count <= 1719; count++) {aKL[count] = 0.0;aKR[count] = 0.0;}
+	for(int count = 0; count <= 679; count++) {aLL[count] = 0.0;aLR[count] = 0.0;}
 	
-	for(int count = 0; count < 9699; count++) {aAL[count] = 0.0;aAR[count] = 0.0;}
-	for(int count = 0; count < 5999; count++) {aBL[count] = 0.0;aBR[count] = 0.0;}
-	for(int count = 0; count < 2319; count++) {aCL[count] = 0.0;aCR[count] = 0.0;}
-	for(int count = 0; count < 939; count++) {aDL[count] = 0.0;aDR[count] = 0.0;}
+	for(int count = 0; count <= 9699; count++) {aAL[count] = 0.0;aAR[count] = 0.0;}
+	for(int count = 0; count <= 5999; count++) {aBL[count] = 0.0;aBR[count] = 0.0;}
+	for(int count = 0; count <= 2319; count++) {aCL[count] = 0.0;aCR[count] = 0.0;}
+	for(int count = 0; count <= 939; count++) {aDL[count] = 0.0;aDR[count] = 0.0;}
 	
-	for(int count = 0; count < 15219; count++) {aEL[count] = 0.0;aER[count] = 0.0;}
-	for(int count = 0; count < 8459; count++) {aFL[count] = 0.0;aFR[count] = 0.0;}
-	for(int count = 0; count < 4539; count++) {aGL[count] = 0.0;aGR[count] = 0.0;}
-	for(int count = 0; count < 3199; count++) {aHL[count] = 0.0;aHR[count] = 0.0;}
+	for(int count = 0; count <= 15219; count++) {aEL[count] = 0.0;aER[count] = 0.0;}
+	for(int count = 0; count <= 8459; count++) {aFL[count] = 0.0;aFR[count] = 0.0;}
+	for(int count = 0; count <= 4539; count++) {aGL[count] = 0.0;aGR[count] = 0.0;}
+	for(int count = 0; count <= 3199; count++) {aHL[count] = 0.0;aHR[count] = 0.0;}
 	
-	for(int count = 0; count < 3110; count++) {aML[count] = aMR[count] = 0.0;}	
+	for(int count = 0; count <= 3110; count++) {aML[count] = aMR[count] = 0.0;}	
 	
 	feedbackAL = 0.0; feedbackAR = 0.0;
 	feedbackBL = 0.0; feedbackBR = 0.0;
 	feedbackCL = 0.0; feedbackCR = 0.0;
 	feedbackDL = 0.0; feedbackDR = 0.0;
 	
-	for(int count = 0; count < 6; count++) {lastRefL[count] = 0.0;lastRefR[count] = 0.0;}
+	for(int count = 0; count <= 6; count++) {lastRefL[count] = 0.0;lastRefR[count] = 0.0;}
 	
 	thunderL = 0; thunderR = 0;
 	
